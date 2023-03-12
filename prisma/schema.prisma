@@ -15,6 +15,7 @@ model User {
   name      String
   createdAt DateTime @default(now())
   messages  Message[]
+  role Role @default(USER)
 }
 
 model Message {
@@ -23,6 +24,12 @@ model Message {
   createdAt DateTime @default(now())
   userId    Int
   user      User     @relation(fields: [userId], references: [id])
+  likes     Int  @default(0)
+}
+
+enum Role {
+  USER
+  ADMIN
 }
 
 generator pothos {

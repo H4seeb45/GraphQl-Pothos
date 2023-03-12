@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
+import { Role } from "@prisma/client";
 
 async function main() {
     // Delete all `User` and `Message` records
@@ -19,6 +20,7 @@ async function main() {
                     },
                 ],
             },
+            role: Role.USER
         },
     });
     await prisma.user.create({
@@ -34,6 +36,7 @@ async function main() {
                     },
                 ],
             },
+            role: Role.USER
         },
     });
     await prisma.user.create({
@@ -49,6 +52,7 @@ async function main() {
                     },
                 ],
             },
+            role: Role.ADMIN
         },
     });
 }

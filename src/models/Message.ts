@@ -1,7 +1,6 @@
 // src/models/Message.ts
 
 import { builder } from "../builder";
-import { prisma } from "../db";
 
 builder.prismaObject("Message", {
     fields: (t) => ({
@@ -10,5 +9,8 @@ builder.prismaObject("Message", {
         createdAt: t.expose("createdAt", {
             type: "Date",
         }),
+        userId: t.exposeID("userId"),
+        likes: t.exposeInt("likes"),
+        user: t.relation("user")
     }),
 });
